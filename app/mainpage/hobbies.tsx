@@ -82,10 +82,10 @@ const HobbiesSection: React.FC<HobbiesSectionProps> = ({ language }) => {
       playerembed = `<iframe style="border: 0; width: 700px; height: 400px;" src="https://bandcamp.com/EmbeddedPlayer/album=584616248/size=large/bgcol=333333/linkcol=0f91ff/artwork=small/transparent=true/" seamless><a href="https://eleazargalope.bandcamp.com/album/kailan-ka-huling-nalungkot-2023-remaster">Kailan Ka Huling Nalungkot? (2023 Remaster) by Eleazar Galope</a></iframe>`;
       break;
     case 1:
-      playerembed = `<iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/67On9vsciBQtZWeSxzXjHM" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
+      playerembed = `<iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/67On9vsciBQtZWeSxzXjHM?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
       break;
     case 2:
-      playerembed = `<iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/5DeA1Tqs3aFqeJURnIaflF" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
+      playerembed = `<iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/5MMvI5sqs62xL24Vu9OYyy?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
       break;
     default:
       playerembed = '<p>Invalid index or embed</p>';

@@ -126,3 +126,15 @@ h1, h2, h3, p, label, input, button, a, textarea {
 #hobbiesdesc a:hover {
   color: rgb(163 230 53);
 }
+
+textarea {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  resize: none;
+  background-color: transparent;
+  outline: none;
+}
+
+textarea::-webkit-scrollbar {
+  display: none;
+}

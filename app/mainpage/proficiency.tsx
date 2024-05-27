@@ -21,9 +21,10 @@ interface Strings {
 
 interface ProficiencySectionProps {
   language: string;
+  allowEdit: boolean;
 }
 
-const ProficiencySection: React.FC<ProficiencySectionProps> = ({ language }) => {
+const ProficiencySection: React.FC<ProficiencySectionProps> = ({ language, allowEdit }) => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [strings, setStrings] = useState<Strings>({});
   const [cardsData, setCardsData] = useState<Card[]>([]);
@@ -77,10 +78,10 @@ const ProficiencySection: React.FC<ProficiencySectionProps> = ({ language }) => 
   return (
     <section id="proficiency" className="w-full min-h-screen flex flex-col items-center justify-center bg-gray-800 text-gray-100 relative py-10">
       <h2 className="text-3xl sm:text-4xl text-center font-bold mx-20">{strings[language]?.aboutmetitle}</h2>
-      <section id="longAboutMe" className="w-3/4 text-center text-base mt-10 mx-10 p-7 italic sm:text-lg">
-        <p>{strings[language]?.longAboutMe}</p>
+      <section id="longAboutMe" className="w-3/4 text-center text-base mx-10 italic sm:text-lg">
+            <p className={`${allowEdit ? 'hidden' : 'block'} mt-10 p-7`}>{strings[language]?.longAboutMe}</p>
+            <textarea id="longAboutMeTextArea" className={`${allowEdit ? 'block' : 'hidden'} mt-14 text-center italic`} defaultValue={strings[language]?.longAboutMe} style={{ width: '100%', height: '100px' }}/>
       </section>
-
       {/* Card container */}
       <div className="flex overflow-x-hidden w-full justify-center transition duration-300 ease-in-out transform translate-x-0">
         {cardsData.map((cardData, index) => (

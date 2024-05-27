@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faFile } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin, faFacebook, faXTwitter, faInstagram, faSpotify, faYoutube, faGithub } from '@fortawesome/free-brands-svg-icons';
-import { db, storage } from '../firebase';
+import { db } from '../firebase';
 import { collection, getDocs } from 'firebase/firestore';
 
 interface IntroSectionProps {
   language: string;
+  allowEdit: boolean;
 }
 
 interface LanguageStrings {
@@ -29,7 +30,7 @@ interface Strings {
   [key: string]: LanguageStrings;
 }
 
-const IntroSection: React.FC<IntroSectionProps> = ({ language }) => {
+const IntroSection: React.FC<IntroSectionProps> = ({ language, allowEdit }) => {
   const [tooltip, setTooltip] = useState<string | null>(null);
   const [strings, setStrings] = useState<Strings>({});
   const [showLatinName, setShowLatinName] = useState(false);
@@ -68,10 +69,15 @@ const IntroSection: React.FC<IntroSectionProps> = ({ language }) => {
       <div className="w-full max-w-4xl flex flex-col md:flex-row items-center md:items-start justify-between px-4 md:px-0">
         {/* First Column */}
         <div className="flex flex-col items-center text-center md:items-end md:text-right w-full md:w-1/2 my-auto">
-          <h1 id="fullName" className="text-3xl sm:text-5xl font-bold mx-5 md:mx-10 block">{strings[language]?.fullName}</h1>
+        {/* Name */}
+        <h1 id="fullName" className={`${allowEdit ? 'hidden' : 'block'} text-3xl sm:text-5xl font-bold mx-5 md:mx-10`}>
+          {strings[language]?.fullName}
+        </h1>
+        <textarea id="fullNameTextArea" className={`${allowEdit ? 'block' : 'hidden'} text-3xl sm:text-5xl font-bold mx-5 md:mx-10 text-center md:text-right`} defaultValue={strings[language]?.fullName} />
           {showLatinName && <h3 className='mt-3 font-semibold italic mx-5 md:mx-10'>({strings[language]?.latinName})</h3>}
-          <section id="shortAboutMe" className="text-lg sm:text-xl mt-10 mx-5 md:mx-10 italic">
-            <p>{strings[language]?.shortAboutMe}</p>
+          <section id="shortAboutMe" className="text-lg w-full sm:text-xl mx-5 md:mx-10 italic">
+            <p className={`${allowEdit ? 'hidden' : 'block'} mt-10`}>{strings[language]?.shortAboutMe}</p>
+            <textarea id="shortAboutMeTextArea" className={`${allowEdit ? 'block' : 'hidden'} text-lg mt-5 sm:text-xl italic text-center md:text-right`} defaultValue={strings[language]?.shortAboutMe} style={{ width: '100%', height: '150px' }}/>
           </section>
           <div className="mt-10 flex flex-row space-x-2 mx-5 md:mx-10">
             <div className="relative">
